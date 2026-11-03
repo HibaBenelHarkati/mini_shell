@@ -25,4 +25,3 @@ char** parse_input(char* input){
 
     return token;
 }
-s
