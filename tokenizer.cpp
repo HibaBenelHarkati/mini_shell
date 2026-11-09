@@ -1,19 +1,11 @@
 #include<stdio.h>
-//#include "shell.h"
+#include "tokenizer.h"
 #include<iostream>
 #include<cstdlib>
 #include <cstring>
 
 
-
-
-typedef struct partition{
-    char* value; 
-    const char* type;
-    partition *next;
-}partition;
-
-partition* parse_input(char* input){
+partition* tokenize_input(char* input){
 
     size_t buffer_size=strlen(input)+1;
     size_t size_token=0;                  //do not know the size of each token 
@@ -92,6 +84,8 @@ partition* parse_input(char* input){
 
 
 }
+
+/*
 int main(){
     char* input=NULL;
     size_t size;
@@ -102,9 +96,7 @@ int main(){
     size=strlen(input);
     partition* ptr;
     ptr=liste;
-    /*for (int i = 0; i<size; i++) {
-        std::cout<liste[i]<<std::endl;
-    }*/
+    
     while(ptr!=NULL){
         std::cout<<ptr->value<<" Type "<<ptr->type<<std::endl;
         ptr=ptr->next;
@@ -112,5 +104,5 @@ int main(){
 
 
     return 0;
-}
+}*/
 
