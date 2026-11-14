@@ -122,7 +122,7 @@ args* parser(partition* tokens){
     }
     return head;
 } 
-
+/*
 int main(){
 
     char* input=NULL;
@@ -162,5 +162,5 @@ int main(){
 
     return 0;
 }
-
+*/
 

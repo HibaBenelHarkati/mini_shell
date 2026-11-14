@@ -7,6 +7,8 @@
 #include "tokenizer.h"
 
 
+
+
 typedef struct redirections{
     char* file;                             
     const char* type_redir;                 //operation of redirections: redir_in , redir_out , append , heredoc
