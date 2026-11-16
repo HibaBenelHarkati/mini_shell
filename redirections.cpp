@@ -5,7 +5,7 @@
 #include <cstring>
 #include <climits>
 #include <unistd.h>
-#include <sys/wait.h>
+#include <sys/wait.h> 
 
 void redirect_exec(args* cmd){
     redirections* redir =cmd->ptr1;

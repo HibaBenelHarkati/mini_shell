@@ -80,7 +80,7 @@ void exec_cd(args* cmd){
     }
 
 }
-
+ 
 void exec_pwd(){
     char current_path[PATH_MAX];
     getcwd(current_path, sizeof(current_path));

@@ -7,7 +7,7 @@
 #include <stdio.h>
 #include <stdlib.h>
 #include <string.h>
-
+ 
 
 void redir_in(redirections* redir);
 void redir_out(redirections* redir);

@@ -11,7 +11,7 @@
 #include "include/redirections.h"
 #include "include/tokenizer.h"
 #include "include/process.h"
-
+  
 
 void integration(args* cmd){
         args* temp=cmd; 

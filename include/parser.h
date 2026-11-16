@@ -21,7 +21,7 @@ typedef struct args{
     redirections *ptr1;                     //ptr1:  
     args *next_part;
 }args;
-
+ 
 args* add_cmd(char* val, args* current);
 void add_args(char* val, args* current);
 void add_redir(args* current, const char* type, char* value);

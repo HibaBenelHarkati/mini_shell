@@ -6,7 +6,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 
-
+ 
 void exec_cmd(args* cmd){
     
     execvp(cmd->argv[0],cmd->argv);
