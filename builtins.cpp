@@ -7,9 +7,7 @@
 #include <unistd.h>
 
 #include <unistd.h>
-//use linux venv
 
-//echo 
 void exec_echo(args* cmd){
     for(size_t i = 1; i < cmd->argc; i++){
         std::cout << cmd->argv[i] << " ";
@@ -19,12 +17,11 @@ void exec_echo(args* cmd){
 
 //cd
 void exec_cd(args* cmd){
-   // std::cout << "PID exec_cd : " << getpid() << std::endl;
     char current_path[PATH_MAX];
     char new_path[PATH_MAX];
     char *path;
 
-    if (cmd->argc == 1){  //cd :: home
+    if (cmd->argc == 1){ 
         getcwd(current_path, sizeof(current_path));
         path = getenv("HOME");
         chdir(path);
@@ -66,7 +63,7 @@ void exec_cd(args* cmd){
 
     }
 
-    else {  //full path
+    else {  
         std::cout << "Chemin reçu : " << cmd->argv[1] << std::endl;
 
         if (chdir(cmd->argv[1]) == -1) {
@@ -83,7 +80,6 @@ void exec_cd(args* cmd){
     }
 
 }
-
 
 void exec_pwd(){
     char current_path[PATH_MAX];
