@@ -14,11 +14,12 @@ void exec_echo(args* cmd){
     for(size_t i = 1; i < cmd->argc; i++){
         std::cout << cmd->argv[i] << " ";
     }
+    std::cout << std::endl;
 }
 
 //cd
 void exec_cd(args* cmd){
-    std::cout << "PID exec_cd : " << getpid() << std::endl;
+   // std::cout << "PID exec_cd : " << getpid() << std::endl;
     char current_path[PATH_MAX];
     char new_path[PATH_MAX];
     char *path;
@@ -30,6 +31,8 @@ void exec_cd(args* cmd){
         setenv("OLDPWD", current_path, 1);
         getcwd(new_path, sizeof(new_path));
         setenv("PWD", new_path, 1);
+        std::cout << new_path << std::endl;
+
     }
 
     else if (strcmp(cmd->argv[1], "-") == 0){   //go back to the latest visited path
@@ -48,6 +51,8 @@ void exec_cd(args* cmd){
         setenv("OLDPWD", current_path, 1);
         getcwd(new_path, sizeof(new_path));
         setenv("PWD", new_path, 1);
+        std::cout << new_path << std::endl;
+
     }
 
     else if (strcmp(cmd->argv[1], "~") == 0){   
@@ -57,18 +62,18 @@ void exec_cd(args* cmd){
         setenv("OLDPWD", current_path, 1);
         getcwd(new_path, sizeof(new_path));
         setenv("PWD", new_path, 1);
+        std::cout << new_path << std::endl;
+
     }
 
-    else {
+    else {  //full path
         std::cout << "Chemin reçu : " << cmd->argv[1] << std::endl;
 
         if (chdir(cmd->argv[1]) == -1) {
             perror("chdir");
             return;
         }
-
         char path[PATH_MAX];
-
         if (getcwd(path, sizeof(path)) == NULL) {
             perror("getcwd");
             return;
@@ -86,10 +91,6 @@ void exec_pwd(){
     std::cout<<current_path<<std::endl;
 }
 
-void exec_exit()
-{
-    exit(0);
-}
 
 
 

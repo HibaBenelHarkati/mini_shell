@@ -8,18 +8,9 @@
 
 
 void exec_cmd(args* cmd){
-    pid_t process=fork();
-
-    if(process<0){
-        std::cout<<"fork failed";
-    }
-
-    else if (process==0){
-        execvp(cmd->argv[0],cmd->argv);
-    }
-    else{
-        int wc=wait(NULL);
-    }
+    
+    execvp(cmd->argv[0],cmd->argv);
+    
 }
 /*
 int main(){

@@ -38,7 +38,7 @@ void exec_pipe(args* cmd){
                 redirect_exec(temp);
             
             exec_cmd(temp);
-            _exit(127);
+          
         }
         else if (pid > 0){
             temp = temp->next_part;
@@ -53,7 +53,7 @@ void exec_pipe(args* cmd){
     wait(NULL);
     }
 }
-
+/**
 int main(){
     char* input=NULL;
     size_t size=0;
@@ -67,3 +67,4 @@ int main(){
     args* head=parser(liste);
     exec_pipe(head);
 }
+*/

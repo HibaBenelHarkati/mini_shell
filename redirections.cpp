@@ -8,7 +8,8 @@
 #include <sys/wait.h>
 
 void redirect_exec(args* cmd){
-    redirections* redir = cmd->ptr1;
+    redirections* redir =cmd->ptr1;
+    std::cout.flush();
     pid_t process=fork();
 
     if (process<0){std::cout<<"error in fork";}
@@ -19,6 +20,7 @@ void redirect_exec(args* cmd){
                     redir_in(redir);
                 }
                 else if(strcmp(redir->type_redir,"REDIR_OUT")==0){
+                    
                     redir_out(redir);
                 }
                 else if(strcmp(redir->type_redir,"APPEND")==0){
@@ -28,15 +30,18 @@ void redirect_exec(args* cmd){
             redir = redir->next_red;}
         if(strcmp(cmd->argv[0],"echo")==0){ //builtins
             exec_echo(cmd);
+            _exit(EXIT_SUCCESS);
         }
         else{
             execvp(cmd->argv[0], cmd->argv);
         }
     }
     else{
-        int wc=wait(NULL);
-    }
+        int status;
+        waitpid(process, &status, 0);
 }
+    }
+
 
 
 void redir_out(redirections* redir){

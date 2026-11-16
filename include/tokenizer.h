@@ -1,7 +1,10 @@
+#ifndef TOKENIZER_H
+#define TOKENIZER_H
+
+
 #include<stdio.h>
 #include<cstdlib>
 
-#define MAX_INPUT 1000
 
 
 typedef struct partition{
@@ -12,3 +15,4 @@ typedef struct partition{
 
 
 partition* tokenize_input(char* input);
+#endif
