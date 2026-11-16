@@ -1,20 +1,25 @@
 #include<stdio.h>
-//#include "shell.h"
+#include "include/tokenizer.h"
 #include<iostream>
 #include<cstdlib>
 #include <cstring>
 
 
-char** parse_input(char* input){
+partition* tokenize_input(char* input){
 
     size_t buffer_size=strlen(input)+1;
     size_t size_token=0;                  //do not know the size of each token 
-    size_t j=0;
     size_t i=0;
 
-    char** tokens=(char**)malloc(buffer_size*sizeof(char*));
+
+    //initiating the header of the linked list
+    partition* tokens=NULL; //head
+
+    partition* ptr=NULL;
+    ptr=tokens;
+
     size_t length=0;
-    size_t ptr=0;
+    size_t start=0;
 
     
     
@@ -24,43 +29,80 @@ char** parse_input(char* input){
             size_token++;       //counts the lenghth of each token
             i++;
         }
-        //space allocation
-        tokens[j]=(char*)malloc((size_token+1)*sizeof(char));
-        
-        if (tokens[j]==NULL){
-            std::cerr<<"Memory allocation FAILED !";
-            exit(EXIT_FAILURE);
+
+        partition* current=(partition*)malloc(sizeof(partition));
+        current->next=NULL;
+
+        if (current==NULL){
+            std::cout<<"allocation error";
         }
+        if(tokens==NULL){
+            tokens=current; //head of the list 
+        }
+
+        else{
+            ptr->next=current;
+        }
+
+        current->value=(char*)malloc(size_token + 1);
+        //fill the struct
+        //value
         for(size_t k=0; k<size_token; k++){
-            tokens[j][k]=input[ptr+k];
+            current->value[k]=input[start+k];
         }
-        tokens[j][size_token]='\0';
-        ptr=i+1;                     //add the loops break +1 tp avoid the space
-        j++;
+        current->value[size_token]='\0';
+
+      
+        if (strcmp(current->value, "|") == 0)
+            current->type = "PIPE";
+
+        else if (strcmp(current->value, "<") == 0)
+            current->type = "REDIR_IN";
+
+        else if (strcmp(current->value, ">") == 0)
+            current->type = "REDIR_OUT";
+
+        else if (strcmp(current->value, ">>") == 0)
+            current->type = "APPEND";
+
+        else if (strcmp(current->value, "<<") == 0)
+            current->type = "HEREDOC";
+
+        else
+            current->type = "WORD";
+
+     
+        ptr=current;      //increment the ptr
+
+        start=i+1;                     //add the loops break +1 tp avoid the space
         i++;
         size_token = 0;
     }
     //tokenisation
-
+    
     return tokens ;
 
 
 }
+
+/*
 int main(){
     char* input=NULL;
     size_t size;
     std::cout << "Enter a command: ";
     getline(&input,&size, stdin);
 
-    char** tokens = parse_input(input);
+    partition* liste= parse_input(input);
     size=strlen(input);
-
-
-    for (int i = 0; i<size; i++) {
-        std::cout<<tokens[i]<<std::endl;
+    partition* ptr;
+    ptr=liste;
+    
+    while(ptr!=NULL){
+        std::cout<<ptr->value<<" Type "<<ptr->type<<std::endl;
+        ptr=ptr->next;
     }
 
 
     return 0;
-}
+}*/
 
