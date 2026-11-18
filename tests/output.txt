@@ -1,1 +1,9 @@
-hell0o
+builtins.cpp
+integration.cpp
+parser.cpp
+pipe_exec.cpp
+process.cpp
+redirections.cpp
+shell.cpp
+terminal.cpp
+tokenizer.cpp

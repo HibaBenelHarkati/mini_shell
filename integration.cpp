@@ -6,11 +6,7 @@
 #include <unistd.h>
 #include <sys/wait.h>
 #include "include/parser.h"
-#include "include/builtins.h"
-#include "include/pipe_exec.h"
-#include "include/redirections.h"
-#include "include/tokenizer.h"
-#include "include/process.h"
+#include "include/integration.h"
 
 
 void integration(args* cmd){
@@ -49,7 +45,7 @@ void integration(args* cmd){
                 }
     }
 
-
+/*
 
 int main(){
     char* input=NULL;
@@ -69,4 +65,4 @@ int main(){
         integration(head);
     }
     return 0;
-}
+}*/

@@ -73,7 +73,7 @@ partition* tokenize_input(char* input){
 
      
         ptr=current;      //increment the ptr
-
+        
         start=i+1;                     //add the loops break +1 tp avoid the space
         i++;
         size_token = 0;
