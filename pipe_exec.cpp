@@ -36,7 +36,13 @@ void exec_pipe(args* cmd){
 
             if (temp->ptr1 != NULL)
                 redirect_exec(temp);
-            
+            std::cout << "EXEC: ";
+            /*
+            for(int k = 0; k < temp->argc; k++){
+                std::cout << temp->argv[k]<<std::end;
+            }
+            */
+
             exec_cmd(temp);
           
         }
