@@ -41,4 +41,18 @@ The project explores core operating system concepts, including process managemen
 - Inter-process communication
 - File descriptor manipulation
 - Unix pipelines and I/O redirection
-- Dynamic memory allocation and linked-list based data structures
+- Dynamic memory allocation and linked-list-based data structures
+
+## Build and Run (Linux)
+
+### Requirements
+
+- Linux
+- GCC / G++
+- Qt5 Widgets
+- pkg-config
+
+### Compilation
+
+```bash
+g++ main.cpp tokenizer.cpp parser.cpp pipe_exec.cpp redirections.cpp integration.cpp  -o minishell  -fPIC  $(pkg-config --cflags --libs Qt5Widgets)
